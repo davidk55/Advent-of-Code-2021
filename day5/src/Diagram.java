@@ -26,6 +26,17 @@ public class Diagram {
         }
     }
 
+    public void addDiagonalLine(int x1, int y1, int x2, int y2) {
+        if (Math.abs(x2 - x1) == Math.abs(y2 - y1)) {
+            for (int i = 0; i <= Math.abs(x2 - x1); i++) {
+                if (x1 < x2 && y1 < y2) diagram[x1 + i][y1 + i]++;
+                else if (x1 > x2 && y1 < y2) diagram[x1 - i][y1 + i]++;
+                else if (x1 < x2 && y1 > y2) diagram[x1 + i][y1 - i]++;
+                else if (x1 > x2 && y1 > y2) diagram[x1 - i][y1 - i]++;
+            }
+        }
+    }
+
     public int countPositionsTwoOrMore() {
         int counterTwoOrMore = 0;
         for (int[] i : diagram) {
